@@ -15,21 +15,19 @@ const api = (function(){
     });
   };
 
-  const updateItem = function(id, updateData, callback) {
-    $.ajax({
+  const updateItem = function(id, updateData) {
+   return $.ajax({
       url: BASE_URL + '/items/' + id,
       method: 'PATCH',
       contentType: 'application/json',
       data: JSON.stringify(updateData),
-      success: callback
     });
   };
 
-  const deleteItem = function(id, callback) {
-    $.ajax({
+  const deleteItem = function(id) {
+   return $.ajax({
       url: BASE_URL + '/items/' + id,
       method: 'DELETE',
-      success: callback
     });
   };
 
