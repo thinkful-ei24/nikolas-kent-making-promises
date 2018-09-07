@@ -83,12 +83,14 @@ const shoppingList = (function(){
       event.preventDefault();
       const newItemName = $('.js-shopping-list-entry').val();
       $('.js-shopping-list-entry').val('');
-      api.createItem(newItemName, 
+      api.createItem(newItemName).then(
         (newItem) => {
           store.addItem(newItem);
           render();
-        },
+        }
+      ).catch(
         (err) => {
+          console.log('error logging');
           console.log(err);
           store.setError(err);
           render();

@@ -1,19 +1,17 @@
 const api = (function(){
   const BASE_URL = 'https://thinkful-list-api.herokuapp.com/richie';
 
-  const getItems = function(callback) {
-    $.getJSON(BASE_URL + '/items', callback);
+  const getItems = function() {
+    return $.getJSON(BASE_URL + '/items');
   };
 
-  const createItem = function(name, onSuccess, onError) {
+  const createItem = function(name) {
     const newItem = JSON.stringify({ name });
-    $.ajax({
+    return $.ajax({
       url: BASE_URL + '/items',
       method: 'POST',
       contentType: 'application/json',
-      data: newItem,
-      success: onSuccess,
-      error: onError,
+      data: newItem
     });
   };
 
